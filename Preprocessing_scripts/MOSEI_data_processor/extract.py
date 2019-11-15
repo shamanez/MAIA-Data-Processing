@@ -62,13 +62,10 @@ SENTIMENT_THRESHOLD = 1
 # #################################################################
 
 
-# #Load the new csv and save all the example names to a list #################################
-
+# ############################# transcript #################################
 # with open(REAL_LABELS) as f:
 #     list_of_names = [row.split(',')[0] for row in f]
 # # print(list_of_names)
-# ###########################################################################
-
 # for filename in os.listdir(TEXT_PATH):
 #     try:
 #         print("try... - File : ", end='')
@@ -119,31 +116,22 @@ SENTIMENT_THRESHOLD = 1
 #                         with open(test_dir + single_filename + ".txt", 'w', encoding="latin-1") as out:
 #                             print(line.split('___')[4])
 #                             out.write(line.split('___')[4])
-
-
-
-
 # ########################################################################################
 
 
 ########### Converting the mp4 files in to .wav of 16000K######
-
-video_list = os.listdir(video_path)
-
-vid_names=[v.split('.m')[0] for v in video_list]
-
-
-for video_name in vid_names:
-    video_filename = video_path + video_name +'.mp4'
-    audio_filename = audio_path + video_name +'.wav'
-    command = "ffmpeg -i " + video_filename + " -ab 160k -ac 2 -ar 44100 -vn " + audio_filename
-    subprocess.call(command, shell=True)
-	# video = VideoFileClip(video_path + video_name +'.mp4')
-	# audio = video.audio
-	# file_name = video_name
-	# audio.write_audiofile(audio_path + file_name + '.wav')
-
-
+# video_list = os.listdir(video_path)
+# vid_names=[v.split('.m')[0] for v in video_list]
+# for video_name in vid_names:
+#     video_filename = video_path + video_name +'.mp4'
+#     audio_filename = audio_path + video_name +'.wav'
+#     command = "ffmpeg -i " + video_filename + " -ab 160k -ac 2 -ar 44100 -vn " + audio_filename
+#     subprocess.call(command, shell=True)
+# 	# video = VideoFileClip(video_path + video_name +'.mp4')
+# 	# audio = video.audio
+# 	# file_name = video_name
+# 	# audio.write_audiofile(audio_path + file_name + '.wav')
+# ########################################################################################
 
 # #Better check all 3 modalities##################
 # #### Checker function###################
@@ -159,6 +147,3 @@ for video_name in vid_names:
 #     missing_vid_data=[x+".mp4" for x in aud_name if not x in vid_name]
 
 # #################################################################
-
-
-

@@ -5,13 +5,16 @@ import numpy as np
 from moviepy.editor import *
 import subprocess
 
-LABEL_CSV='/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/all_labels.csv'
-REAL_LABELS='/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/formatted_labels.csv'
-TEXT_PATH='/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/Transcript/Segmented/Combined'
 
-video_path = '/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/Videos/Segmented/Combined/'
-audio_path = '/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/FInal_data/audio/'
-test_dir = '/media/tkal976/Transcend/CMU-MOSEI-FULL-DATA-SET/FInal_data/text/'
+
+
+LABEL_CSV='/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/all_labels.csv'
+REAL_LABELS='/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/formatted_labels.csv'
+TEXT_PATH='/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/Transcript/Segmented/Combined'
+
+video_path = '/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/Videos/Segmented/Combined/'
+audio_path = '/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/FInal_data/audio/'
+test_dir = '/media/gsir059/Transcend/CMU-MOSEI-FULL-DATA-SET/FInal_data/text/'
 
 label_names = ['angry', 'disgusted', 'afraid', 'happy', 'sad']
 SENTIMENT_THRESHOLD = 1

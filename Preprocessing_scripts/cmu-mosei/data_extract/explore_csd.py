@@ -11,6 +11,7 @@ import csv
 input_dir = '/home/arei826/CMU-MultimodalSDK/cmu-mosei-labels/CMU_MOSEI_LabelsEmotions.csd'
 output_dir = '/home/arei826/CMU-MultimodalSDK/Labels/'
 csv_prefix = 'LabelsEmotions'
+create_csv = False
 
 # Load dictionary of .csd files into dictionary
 mydataset=mmdatasdk.mmdataset({0:input_dir})
@@ -33,6 +34,10 @@ print('Finished loading features and intervals')
 # Create headers
 print("Writing labels and durations to csv file for each full video..")
 header = ['segmentid','happy','sad','anger','surprise','disgust','fear','start_t','end_t']
+
+# If create_csv is False, exit.
+if not create_csv:
+    exit('Exited - no csv created.')
 
 # Zip intervals & features, append to my_data, write data to individual .csv
 for file_name in num_files:

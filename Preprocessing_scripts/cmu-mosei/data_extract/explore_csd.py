@@ -18,14 +18,14 @@ mydic = mydataset.computational_sequences[0].data
 
 print('Loaded Computational Sequence Data (.csd) into dictionary...')
 
-# List data id's in num_files
+# Lists segment/label id's in num_files
 num_files=[]
 for key, value in mydic.items() :
     num_files.append(key)
 
 # Shape and length check
 print('Total file number: ',len(num_files))
-print('Contains duplicates: ',len(num_files)==len(set(num_files)))
+print('Contains duplicates: ',len(num_files) != len(set(num_files)))
 print('Features shape: ',mydic['22689']['features'][:].shape)
 print('Intervals shape: ',mydic['22689']['intervals'][:].shape)
 print('Finished loading features and intervals')

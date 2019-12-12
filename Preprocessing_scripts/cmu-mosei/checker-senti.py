@@ -7,21 +7,18 @@ import subprocess
 
 from shutil import copyfile
 
-my_base='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/New_Chunked_Data/processed'
+processed_data_base='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/New_Chunked_Data/processed'
 
-label_base=my_base + '/labels/final_labels/'
+label_base='./sentiment_final_labels/decided/mosei_sent'
 
-LABEL_CSV=label_base + 'label_file_valid.csv' # IF TRAIN
+LABEL_CSV='./sentiment_final_labels/decided/label_file_test.csv' # IF test
 
-split_dir='/valid/'
+split_dir='/test/'  # IF test
 
-video_path = my_base+'/facevid' + split_dir
-audio_path = my_base+'/audio' + split_dir
-text_path =  my_base+'/text' + split_dir
+video_path = processed_data_base+'/facevid' + split_dir
+audio_path = processed_data_base+'/audio' + split_dir
+text_path =  processed_data_base+'/text' + split_dir
 
-
-
-label_names = ['happy', 'sad', 'anger', 'surprise', 'disgust', 'fear']
 
 
 text_fn=[]
@@ -57,6 +54,20 @@ for filename in os.listdir(text_path):
 print("Number of text files",len(text_fn))
 
 
+missing_transcript=[]
+
+
+
+mxt=0
+for elx in vid_fn:
+    if elx in text_fn:
+        continue
+    else:
+        mxt=mxt+1
+        missing_transcript.append(elx)
+
+
+
 
 with open(LABEL_CSV) as f:
     cf = csv.reader(f)
@@ -78,6 +89,14 @@ print("length of the labeld examples",len(labeled_ex))
 
 
 
+for element in vid_fn:
+    if element in aud_fn:
+        continue
+    else:
+        print(element)
+
+
+
 #Checking the common number of examples 
 
 for ele in text_fn:
@@ -89,9 +108,10 @@ for ele in text_fn:
 print("number of common files in three modalities",len(cmn_files))
 
 
-header_label_final = ['FileName','Emotion']
 
-label_check=open(my_base+'/label_file_valid'+'.csv', 'wt', newline ='')
+header_label_final = ['FileName','SEVEN','TWO']
+
+label_check=open(label_base+'/label_file_test'+'.csv', 'wt', newline ='')
 
 writer_check = csv.writer(label_check, delimiter=',')
 writer_check.writerow(i for i in header_label_final)
@@ -99,9 +119,9 @@ writer_check.writerow(i for i in header_label_final)
 
 
 
-tsvfile_a=open(my_base+'/valid_a.tsv', 'w')
-tsvfile_v=open(my_base+'/valid_v.tsv', 'w')
-tsvfile_t=open(my_base+'/valid_t.tsv', 'w')
+tsvfile_a=open(label_base+'/test_a.tsv', 'w')
+tsvfile_v=open(label_base+'/test_v.tsv', 'w')
+tsvfile_t=open(label_base+'/test_t.tsv', 'w')
 
 
 with open(LABEL_CSV) as f:
@@ -113,9 +133,10 @@ with open(LABEL_CSV) as f:
             continue
         elif row[0] in cmn_files :
 
-            combined_row=row[0:2]
-            
-           
+            combined_row=row[0:3]
+
+          
+ 
             writer_check.writerow(combined_row)
             tsvfile_a.writelines(row[0]+'.wav'+'\n')
             tsvfile_v.writelines(row[0]+'.mp4'+'\n')

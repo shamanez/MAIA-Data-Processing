@@ -15,9 +15,6 @@ import glob
 #from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
 
-
-
-
 from moviepy.tools import subprocess_call
 from moviepy.config import get_setting
 
@@ -55,16 +52,28 @@ standard_valid_fold=['188343', 'VAXhC2U9-2A', 'AxNy9TeTLq8', 'EmmuWoCUgXs', 'icb
 standard_test_fold=['7l3BNtSE0xc', 'dZFV0lyedX4', '286943', '126872', 'qgC8_emxSIU', 'kld9r0iFkWM', 'rC29Qub0U7A', '4YfyP0uIqw0', 'FMenDv3y8jc', '4wLP4elp1uM', 'KYQTwFVBzME', '27v7Blr0vjw', 'DnBHq5I52LM', 'HR18U0yAlTc', 'x266rUJQC_8', 'd1CDP6sMuLA', 'xSCvspXYU9k', '4EDblUpJieU', '4o4ilPK9rl8', '53609', 'SZ7HK5ns6mE', '243981', 'ySblgk7T7eQ', 'MYEyQUpMe3k', 'EujJ0SwiCRE', '3HyAaqre_Fk', 'iQDB_OkAQWs', 'gE7kUqMqQ9g', 'eFV7iFPYZB4', 'IRSxo_XXArg', '3hOlJf_JQDs', 'BRSyH6yfDLk', '1jogeKX0wGw', '3At-BKm9eYk', 'NVLPURuAVLU', 'pZye4zFzk3o', 'l1jW3OMXUzs', 'XKyumlBmix8', 'eKQKEi2-0Ws', 'WgI8IbJtXHw', 'tnWmVXZ87h0', 'YCEllKyaCrc', 'W1CWpktWtTs', '8wQhzezNcUY', '0bxhZ-LIfZY', 'lrjm6F3JJgg', 'Vdf1McvE9ao', 'eQc5uI7FKCU', '2QXHdu2zlQY', 'YCI-ZzclIPQ', '2Ky9DBSl49w', 'SKTyBOhDX6U', 'b86B3hP8ARM', '23656', 'kpS4BXif_Sw', 'dR68gbeOWOc', 'tC2KicUHB9Q', 'absh1hsZeF0', 'c5zxqITn3ZM', 'uogwnZGb-iE', '46495', 'Sq6DIhFxPqQ', 'PexNiFbPTYM', 'z441aDJvAcU', 'OORklkFql3k', 'WbtsuXkaGeg', 'grsV1YN1z5s', 'Gc_zIjqqUys', '424SXFTCFsA', 'P17tYiqMGRU', 'UweZVaFqruU', 'mzAu5gxjE-w', '8TDAP0KNIIw', 'u9ZV8jb_-U0', 'iPPp6MCythU', 'lwL4hjhkid4', '102389', 'frCWtiam4tE', 'pSxte-ms0t8', 'c9hE1ghElrM', 'WfNiQBXmPw8', '_q7DM8WkzAQ', '257534', 'fU5AYkq0m9k', 'q17gSr9kNww', 'AgH84SNRx5s', '206585', 'yzCHa2qchpg', 'GmpDbIstUdc', 'eREud0qYR3s', 'NoOt0oU843M', 'svsbGQn389o', 'ZsLrKF7_Oos', 'Kyz32PTyP4I', '7idU7rR77Ss', '8lfS97s2AKc', 'X2Hs89fZ2-c', '5vwXp27bCLw', 'tZDNinnrGf8', 'KB5hSnV1emg', 'TxRtSItpGMo', 'eJfT7-dDqzA', 'x2n19Cn96aw', 'XDVit9ASVUg', '6brtMLkjjYk', '-rxZxtG0xmY', 'JATMzuV6sUE', 'LueQT0vY1zI', '267466', 'm-7yRWZLwLY', 'OWWHjP3pX9o', 'QnYlpSeVOYo', 'V7OFSHYcQD0', 'GK-Pprzh0t0', 'yLo-Jl8nBXU', '200941', '61531', 'ezuWKsxPRSM', 'ehZrOdw6PhA', '-6rXp3zJ3kc', 'Z4iYSMMMycQ', 'MtIklGnIMGo', '116213', '3XShFTBsp_Q', 'YQZPnHZRp1w', 'fsd1qPLA3kY', '208322', 'uVM4JWjfGgQ', 'QWll4lS1qqI', 'Vlas-mPydcg', 'teQqaAmqqx0', 'AQ4Pktv4-Gc', 'yCpHmPSshKY', 'pDRdCSIyjkA', 'sIusv36VoBY', '8jY_RhOS89o', 'GKsjv42t284', 'HA2AiTz-qxc', 'GXIfrEUJ5d4', '0Fqav67TDEw', '10219', 'wHeZHLv9wGI', 'qDfSYz0PX9g', '180971', 'qBanrqkzobg', 'NgENhhXf0LE', 'SH0OYx3fR7s', 'lc5bSoGlQwY', 'XrNaL-MTjXg', '8i7u3fl-hP8', 'N-NnCI6U52c', 'r46amqjpWgg', 'QVyxySAaehE', 'JKueLneBoik', '110565', 'TqQgIxR7thU', '267694', 'ZKErPftd--w', 'GMa0cIAltnw', 'MSHBEntSDjU', 'AB1PbMaW03s', 'oBS-IW-BO00', '5fKPJPFqPho', '8NPaDkOiXw4', '104741', '2ItiGjefTRA', 'LFOwCSiGOvw', 'YLK58srjhNI', '233939', '5xa0Ac2krGs', 'CbRexsp1HKw', '112425', 'bCBMKwafZKY', '_0efYOjQYRc', 'O2ShYliS3CU', 'Oa2xVjzAMFc', 'bnzVR2ETQQ8', 'yBtMwyQFXwA', 'TtAyUQtmTLk', 'yXE_XZUb8qE', '3wHE78v9zr4', 'cml9rShionM', 'rePYTlT5_AY', '9TAGpMywQyE', 'ryE9VBiR3p8', '238063', 'NlrCjfHELLE', 'oGFDE-6nd7Q', 'bWmrrWQOVCM', '29751', '11UtTaDYgII', 'jZe-2w7pkd8', '275267', 'tymso_pAxhk', 'PcqKFt1p3UQ', 'sfaWfZ2-4c0', 'kLAXmTx2xOA', '3OYY5Tsz_2k', 'wk5lFk5kFjY', 'hE-sA5umuCk', '3IUVpwx23cY', '92291', '102213', '236442', 'nbru7qLot04', 'zhNksSReaQk', '8VhVf0TbjDA', '35694', '20LfN8ENbhM', '257277', 'VsXGwSZazwA', 'EyoMU2yoJPY', 'E1r0FrFyNTw', 'CO2YoTZbUr0', 'wC_1M7KIv9s', '24196', '194299', 'R9xTBw3MCWI', 'cY8DcaHXNNs', 'SwT0gh0V8fI', 'UiurP5k-f1A', 'N0d2JL7JC1s', '208592', 'GAVpYuhMZAw', 'pvIQWWiT4-0', 'namehdJxRIM', 'tNd3--lvSXE', 'NaWmaHwjElo', 'mfpR4CN9LZo', 'U6IqFbpM-VM', 'XLjpZUsFEXo', 'YUNxD04EvfE', 'hI7ObFqn9Bg', 'CO6n-skQJss', 'RsE2gYghZ2s', '2ze94yo2aPo', '254427', 'MHyW857u_X8', 'Xa086gxLJ3Y', 'Uu_XyXyKHAk', 'TsfyeZ8hgwE', 'vI5JH0daNsM', 'mmg_eTDHjkk', 'lD4xtQ6NpDY', 'XWIp0zH3qDM', '259470', '0eTibWQdO5M', 'fcxbB7ybUfs', '5pxFqJ5hKMU', '245582', 'WQFRctNL8AA', '2m58ShI1QSI', 'cn0WZ8-0Z1Y', '25640', 'huzEsVEJPaY', 'UTErYLpdAY0', 'F2hc2FLOdhI', 'vGxqVh_kJdo', 'F_YaG_pvZrA', 'UNLD7eYPzfQ', '0K7dCp80n9c', 'xBE9YWYGjtk', 'nTZSH0EwpnY', 'mZ_8em_-CGc', 'fdc7iyzKvFQ', '221137', 'QBc7X5jj8oA', 'pnpFPX34Agk', '63951', 'veA6ECsGFxI', 'XbkYA-iXUwA', '1LkYxsqRPZM', 'qAip3lZRj-g', 'gR3igiwaeyc', 'pIaEcqnzI-s', 'oHff2W51wZ8', 'XlTYSOaZ_vM', '3WZ6R9B0PcU', 'IOpWjKAHG8Q', '53766', '190743', '107585', 'SYQ_zv8dWng', 'hBzw4r0kfjA', '0uftSGdwo0Q', 'jj8aSNPHMw8', '86c2OkQ3_U8', 'rhQB8e999-Q', 'qyqVc352g3Q', '1zXAYdPdzy8', 'nZFPKP9kBkw', 'A1lFJXUpxZo', '-cEhr0cQcDM', 'Kn5eKHlPD0k', '255408', 'eD5cScqaf6c', 'FHDVQkU-nGI', '24351', 'NOGhjdK-rDI', 'fz-MzQcOBwQ', 'DjcZrtcBZi4', '1HS2HcN2LDo', '209758', '2o2ljA0QD7g', '211875', '5lrDS7LluCA', 'ybK5wRaaUyE', 'M6HKUzJNlsE', 'QIonRUsCqBs', 'k8yDywC4gt8', 'jPtaz1rN6lc', '69824', 'kI6jzM_aLGs', 'x8UZQkN52o4', 'ZKZ8UjaQQT4', 'obGF3RfWQKE', '221153', 'YgyeyooSz0g', 'faUvT7zfsyk', 'ddWHTdJz2O8', 'OKJPFisBoPY', 'HAnQVHOd3hg', 'EO_5o9Gup6g', 'F7zQPzwFToE', '273250', '1pl2FVdQWj0', '91844', 'bvycs3BXtx0', 'hbJfSyJKBEA', 'ZHUFlEgKk-w', 'OyK86reBnJE', 'xwvSYhQrHoA', 'H-74k5vclCU', 'Sb6ftNgzz9M', 'Hq3cHc6X8BM', 'jscKL5jS-SQ', '2vsgDSlJ9pU', 'DtbT85s3i94', 'LcfubBagG6Q', 'f-VdKweez2U', 'a8UMRrUjavI', 'MvEw24PU2Ac', 'MZUr1DfYNNw', 'UcV-bpksJi0', '2W-U94hXuK0', 'OctOcfI4KSs', 'NocexkPXja8', 'eUwbRLhV1vs', 'bdFCD-3BCRg', 'TXiOSZdaLJ8', 'XadAy93f1P8', '136196', 'gJjkCPO7iXg', '210433', 'oH9fMma8jiQ', 'd-Uw_uZyUys', 'oQizLbmte0c', 'X6N7UEFJLNY', '0PlQc98SccA', '3REPHw7oLWo', 'vB_kZocHtYo', '2BuFtglEcaY', 'HMRqR-P68Ws', 'V27mmEkN80g', 'Y2F51I-dzAg', 'dTcz1am1eUw', 'gL8h7lOPv1Q', 'WoL4fCxGd8Q', '135623', '41381', 'IHp8hd1jm6k', 'dHk--ExZbHs', 'o2XbNJDpOlc', 'V2X1NU5RkwY', '9orb0lQnVW4', 'fsBzpr4k3rY', '2fbBrB1nJEQ', 'um8WVjZMLUc', 'eE8Qr9fOvVA', 'fVCDn6SdtVM', '83400', 'an_GzG40hcE', 'xkEK17UUyi4', 'y3r2kk8zvl0', 'KanWhGY33Hk', '210259', 'DR65no1jCbg', 'lkIe41StoGI', 'RB3HA-ZMtFw', 'qEuJj4uW93E', 'ydzNAuqUAnc', 'GO0V4ZGSF28', '9PzZSheh10U', '6RFVsOWK1m4', '-s9qJ7ATP7w', 'ey1lr8wFFDc', 'oZxMx8e0x2U', 'UjqA6KVW2m8', 'OaWYjsS02fk', '79356', '34cU3HO_hEA', 'KZzFCrEyKF0', 'c5VEvmutmVg', 'O4UkHVJlIs8', '22373', 'v_8QeoNc4QY', 'BR2pkk3TK-0', 'EMS14J0odIE', '221274', '92496', 'DMtFQjrY7Hg', 'h1ZZHUU4j0k', 'gpn71-aKWwQ', 'tW5xAWDnbGU', '88791', 'vJDDEuE-FlY', 'kaudsLIvYC8', 'x0rLwBIocuI', 'wnL3ld9bM2o', '8wNr-NQImFg', '37NMbnd7r20', '56989', 'ctAZf4sMBUQ', '7npCA0zoQ8Q', 'u9I5WD3Nglk', 'IIPYcCii7Sg', 'JNhqI4JtPXA', 'Bpy61RdLAvo', 'C5-cY1nPQ20', 'ihPjsliqz5o', '4t5k_yILGJM', 'mgsvwAVQAQo', 'Ie6sDptjAsU', 'lkeVfgI0eEk', 'O-b3DQg0QmA', 'PzI6yY9Y2xQ', 'lYwgLa4R5XQ', 'NIpuKcoJhGM', 'LpTbjgELALo', '0YiAKqU36KE', 'ZznoGQVwTtw', 'QCR7uyowjhM', 'ossKC1VrusE', 'p4WmcxrXkc4', 'ZS1Nb0OWYNE', 'P0UHzR4CmYg', 'qTkazqluJ_I', '252097', '0JaYazphxfM', 'zvZd3V5D5Ik', '-RfYyzHpjk4', 'l0vCKpk6Aes', 'ktblaVOnFVE', 'KRje7su4I5U', 'FqEekswKPWE', '130366', 'HFPGeaEPy9o', '-HeZS2-Prhc', '93iGT5oueTA', 'L-7oRnbi9-w', 'pQpy7RSfWzM', 'YsMM_1R1vtw', 'SBFnCNzlynQ', '4dAYMzRyndc', 'CU6U-gS76K4', 'NiAjz4ciA60', '-9y-fZ3swSY', 'LD3HYOwk1Bc', 'QXXexH-ow_k', '-UUCSKoHeMA', 'RVC8l5hf2Eg', '89ZmOPOilu4', 'xobMRm5Vs44', 'xmLJHru6Z1M', 'zfZUOvZZTuk', 'LJGL2sGvSS0', 'Pbu6oAKFCvo', 'nFTo-Lz4Fr8', 'CwF97vXPYX4', 'WJM8u2I2rQ4', '8XZszYrUSCQ', 'fT6SrlsWV7M', 'fWAKek8jA5M', 'jXQmVFcOiUI', 'KrmVX-HANew', 'kXhJ3hHK9hQ', 'oPlnhc0DkcU', 'OFia3dWgaoI', 'VVtx4IDsHZA', 'VIVkYG31Oas', 'I9iV9q3ePhI', 'ZeH7gZw94k0', 'wznRBN1fWj4', '226601', 'TcTGCIh6e5s', '1S6ji_d4OLI', 'mRqqH_gx7Q0', 'Zb7bdrjWyEY', 'VDkBM0ZG4q8', 'BJS5KCSowgU', '3UOqbf_B_Yc', 'LyOq9mOEPuk', '-MeTTeMJBNc', 'QLI-OnegxFM', '3odZe3AGilc', 'VXy21GwGs8o', '7deoh0NoMs4', 'DzdPl68gV5o', 'VS7xSvno7NA', 'H_x5O9GdknI', '67uKYi7mslE', 'Kn99u05vlpA', 'gKojBrXHhUc', 'AHiA9hohKr8', 'kmgsC68hIL8', 'XVWiAArXYpE', 'X_TusmBIlC0', 'dlE05KC95uk', 'KXsjl0DKgL0', 'b92iw0OAnI4', 'j1m6ctAgjsM', '6EDoVEm16fU', 'jE3gYsxr_5s', '6EJHA6IDLNk', 'xXXcgb9eZ9Y', 'rcfnqiD0y8o', '224370', '237363', '7IxmlIwqigw', '6gtfeIqGasE', '9GzFQBljNIY', 'vGkIaClHKDg', 'iXiMifHNKPI', 'BTjV5dU_rfY', 'g6VJg6ycUk0', 'Y8dI1GTWCk4', 'y5Jpf48SUX8', 'iFxFTtCQ6zA', 'ZKKNd0zR8Io', 'U8VYG_g6yVE', 'GNP0PFas12Y', 'ussfmzwftQ8', 'jLN6B0aSrW0', 'OXsTIPdytiw', '121400', 'CKqDDh50gcU', 'HJTxq72GuMs', '273207', 'lxBKEPIUSgc', '234046', '59673', 'USkMa4Evv7U', '213327', 'kXiBdruxTvE', '201005', '94481', 'ChhZna-aBK4', 'a4PHWxILDp0', 'SqAiJrvHXNA', 'kg-W6-hP2Do', '9Lr4i7bIB6w', 'fhADeWE5VgU', '-yRb-Jum7EQ', 'DVAY-u_cJWU', 'wd8VQ5E7o7o', 'N2nCB34Am-E', 'f8Puta8k8fU', '272838', 'Qfa1fY_07bQ', 'WBA79Q3e_PU', 'ozA7pRW4gFM', 'WuaoxGAKue0', '-AUZQgSxyPQ', 'l4oMbKDuW3Y', '198112', 'H9BNzzxlscA', '224631', '111881', 'U-KihZeIfKI', 'JXYot3NDQn0', '7f3ndBCx_JE', 'F8eQI8E-6q4', '112509', '46615', 'p1zqEGwRMI8', 'Wu-wQTmxRgo', 'V0SvSPkiJUY', '28006', 'cia8OM3Oe7Q', '_aJghSQmxD8', '97ENTofrmNo', '252912', 'bkX5FOX22Tw', '108146', 'Iemw8vqt-54', 'vTAV6FThy30', '_WA0HtVEe8U', '132028', 'nXWNHVZtV9A', 'MLegxOZBGUc', '224263', 'q5M1God4M6Y', '9cYNT_YSo8o', '22689', 'SD6wphlw72U', 'SqofxdeEcjg', '_on_E-ZWy0I', '222247', 'cX8FScpsfLE', 'k1BrzX5bc7U', 'Rb1uzHNcYcA', 'RChkXDS8ulE', '7mb8Y2AhXIY', '226640', 'MM2qPdnRmQ8', 'unOeTDc2rlY', 'ROC2YI3tDsk', 'AlJX3Jw3xKk', 'MHVrwCEWLPI', 'bNQOeiAotbk', 'TLPlduck5II', 'An8x4UfwZ7k', 'JHJOK6cdW-0', 'xU3N7ujUB-g', 'RvmTZVNAAuQ', 'LtlL-03S79Q', 'Xy57UpKRNEo', 'lO6N9dyvPTA', 'cW-aX4dPVfk', 'VwGPIUNayKM', 'p7zuPEZgtY4', 'ZtocGyL3Tfc', '24504', '5eY4S1F62Z4', 'ttfaZ8IIWCo', 'z0y1ZxH1f74', 'VLQgw-88v4Q', '1Gp4l-ZTCVk', 'QJBQIOmG1CA', 'jqutn5ou8_0', 'gcFECfN4BCU', 'Dm8AL84e11w', 'tO68uTk-T_E', '215318', 'DlX-WyVe-D0', 'gLTxaEcx41E', 'RmX9t_HY_dU', 'HbaycY0VuZk', 'dxsPkcG-Q30', 'ZcFzcd4ZoMg', 'yUqNp-poh9M', 'yoDMh8FlHR8', '167521', 'kbRtSmJM5aU', 'skRqBxLLJkE', '100178', '-ri04Z7vwnc', 'mVnqP-vLpuo', 'B9oeT0K92wU', '_OmWVs0-6UM', 'DebbnL-_rnI', 'GlShH_ua_GU', 'Jz1oMq6l-ZM', 'L-a4Sh6iAcw', 'LDKWr94J0wM', 'aa0J1AXSseY', '173CpFb3clw', '202826', 'Wmhif6hmPTQ', '283935', 'naZi9AusrW4', 'wO8fUOC4OSE', '_1nvuNk7EFY', 'PHZIx22aFhU', 'ex-dKshlXoY', '6uoM8-9d0zA', 'ahG9c_uaf8s', 'vR90Pdx9wxs']
 
 
-destination='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/New_Chunked_Data/'
+destination='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/Senti_Chunked_Data/'
 
 
+va_path='/media/gsir059/Transcend/Raw_Data/CMU-MOSEI-raw-original/Raw/Videos/Full/Combined/'
+SDK_l_path='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/SDK_L_senti/'
+#SDK_l_path='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/SDK_L/'
 
-va_path='/home/1TB/CMU/Raw/Videos/Full/Combined/'
-SDK_l_path='/home/1TB/Preprocessing_MOSEI_NEW/clean_label_files/csd_labels/CMU-MultimodalSDK/SDK_L/'
+print('trainig files-',len(standard_train_fold),'validation files-',len(standard_valid_fold),'test files-',len(standard_test_fold))
+
+print('total files',(len(standard_train_fold)+len(standard_valid_fold)+len(standard_test_fold)))
+
+
+exit("-----------------------")
+
+#number of annotated raw full video files 3293
+#number total files that splitted in to train , valid and test  3227
+
+#total segmented files in csd folder with labels - 23259
 
 row_v_l=[]
 SDK_v_l=[]
-
+ 
 Avai_v_l=[]
 
 #The missed one -IUUR2yyNbw
@@ -82,12 +91,14 @@ Avai_v_l=[]
 
 file_names_array = glob.glob( destination+  '**/*.mp4', recursive=True)
 already_cropped=[]
-#print(len(file_names_array))
+print('number of already cropped video',len(file_names_array))
+
 
 already_cropped_Full_name=[]
 
 for full_path in file_names_array:
     
+    print(full_path)
     important_l=len(full_path.split('/')[9].split('.')[0].split('_'))
 
   
@@ -141,12 +152,11 @@ for full_path in file_names_array:
 
 for full_path in file_names_array:
     already_cropped_Full_name.append(full_path.split('/')[9])
-  
 
+  
 print("already cropped video",len(already_cropped))
 
 print("already cropped video",len(already_cropped_Full_name))
-
 
 
 
@@ -158,17 +168,14 @@ for my_el in already_cropped:
 
 
 
-
 missing_examples = open("missing_example.txt", "w")
 
 #missing_labeled = open("missing_labeled.txt", "w")
 
 
 for filename in os.listdir(va_path):
-   
     if filename.endswith(".mp4"):
         row_v_l.append(filename.split(".")[0])
-
 
 
 for filename in os.listdir(SDK_l_path):
@@ -176,38 +183,59 @@ for filename in os.listdir(SDK_l_path):
         SDK_v_l.append(filename.split(".")[0])
 
 
-
+print('number of annotated videos---',len(SDK_v_l),'number of raw videos---',len(row_v_l))
 # for my_missed in row_v_l:
 #     if not my_missed in unq_list_cropped:
 #         print(my_missed)
 #         missing_labeled.writelines(my_missed+ "\n")
 
 
-
      
 
-
+#zx=0
 for ele in SDK_v_l:
     if ele in row_v_l:
+        #zx=zx+1
         Avai_v_l.append(ele)
     else:
+        print(ele)
         missing_examples.writelines(ele+ "\n")
 
 
 
 
-print("avaiable row data",len(Avai_v_l),'Already Cripped data-',len(unq_list_cropped))
+print("avaiable row data for given labeles----",len(Avai_v_l),'Already labeled data-----',len(SDK_v_l))
+
 
 
 #unknown_examples = open(destination+'un/'+"unknown_example.txt", "w")
 
+sentiment_labeled_examples = open("sentiment_labeled_examples.txt", "w")
+
+
+sentiment_labeled_examples_train = open("sentiment_labeled_examples_train.txt", "w")
+
+
+
+sentiment_labeled_examples_test = open("sentiment_labeled_examples_test.txt", "w")
+
+
+
+sentiment_labeled_examples_valid = open("sentiment_labeled_examples_valid.txt", "w")
+
+
+sentiment_labeled_examples_unknown = open("sentiment_labeled_examples_unknown.txt", "w")
+
+
+sentiment_full_vid_unknown = open("sentiment_full_vid_unknown.txt", "w")
 
 for file_name in Avai_v_l:
 
-  
+    
     with open(SDK_l_path+file_name+'.csv') as f:
         cf = csv.reader(f)
         for row in cf:
+
             if row[0]=='segmentID':
                 continue
             else:
@@ -231,99 +259,55 @@ for file_name in Avai_v_l:
                     #continue
 
 
+            
                 ID=int(row[0])
-                start=float(row[7])
-                end=float(row[8])
+                start=float(row[2])
+                end=float(row[3])
 
 
                 targetname=destination+Base+file_name+'_'+str(ID)+'.mp4'
 
+        
                 deciding_name=file_name+'_'+str(ID)+'.mp4'
+
+                
+
+            
 
                 if deciding_name in already_cropped_Full_name:
                     print("already have")
                     continue
 
 
-
-
-                video=VideoFileClip(va_path+file_name+'.mp4')
+                sentiment_labeled_examples.writelines(deciding_name+'\n')    
 
 
 
-                if start <0:
-                    start=0
+                if file_name in standard_train_fold:
+                    sentiment_labeled_examples_train.writelines(deciding_name+'\n')  
+                elif file_name in standard_test_fold:
+                    sentiment_labeled_examples_test.writelines(deciding_name+'\n')  
+                elif file_name in standard_valid_fold:
+                    sentiment_labeled_examples_valid.writelines(deciding_name+'\n')  
+                else:
+                    sentiment_labeled_examples_unknown.writelines(deciding_name+'\n')  
+                    sentiment_full_vid_unknown.writelines(file_name+'\n')
 
-                if video.duration < end:
-                    end=video.duration
+                # video=VideoFileClip(va_path+file_name+'.mp4')
+
+                # if start <0:
+                #     start=0
+
+                # if video.duration < end:
+                #     end=video.duration
                 
             
                 
-                new = video.subclip(start, end)
+                # new = video.subclip(start, end)
 
                 
 
 
-                ffmpeg_extract_subclip(source_vid, start, end, targetname=targetname)
+                # ffmpeg_extract_subclip(source_vid, start, end, targetname=targetname)
 
 
-                # with VideoFileClip(va_path+file_name+'.mp4') as video:
-             
-                #     ID=int(row[0])
-                #     start=float(row[7])
-                #     end=float(row[8])
-
-                #     if start <0:
-                #         start=0
-
-                #     if video.duration < end:
-                #         end=video.duration
-                    
-             
-                    
-                #     new = video.subclip(start, end)
-
-                 
-
-                #     if file_name in standard_train_fold:
-                #         Base='train/'
-                #     elif file_name in standard_test_fold:
-                #         Base='test/'
-                #     elif file_name in standard_valid_fold:
-                #         Base='valid/'
-                #     else:
-                #         Base='un/'
-                #         unknown_examples.writelines(file_name+'_'+str(ID)+'.mp4'+ "\n")
-                #         continue
-
-
-                  
-
-                  
-                #     targetname=destination+Base+file_name+'_'+str(ID)+'.mp4'
-                  
-                #     new.write_videofile(targetname, audio_codec='aac')
-                       
-                #     print("------------")
-
-    
-
-  
-
-
-
-
-
-
-
-
-
-
-# avi_name=va_path+'_2u0MkRqpjA.mp4'
-
-# with VideoFileClip(avi_name) as video:
-#     end= video.duration
-#     start=75.22
-#     new = video.subclip(start, end)
-#     new.write_videofile('zzzzz.mp4', audio_codec='aac')
-#     print(end)

@@ -18,7 +18,7 @@ for folder in ['train','test','valid']:
             os.makedirs(os.path.join(dst_dir,folder,subfolder))
 
 # Create .csv file for indexing 
-with open('test.csv','w',encoding='utf-8') as file:
+with open(csv_file_name,'w',encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(['Filename','Modality','neutral','calm','happy','sad','angry','fearful','disgust','surprised'])
 

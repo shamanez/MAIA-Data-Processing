@@ -72,26 +72,27 @@ standard_test_fold=['tmZoasNr4rU', 'zhpQhgha_KU', 'lXPQBPVc5Cw', 'iiK8YX8oH1E', 
 
 # Record labels in csv
 csv_file_name = 'labels.csv'
-csv_header = ['Filename','Start','End','Score','Type'] 
+csv_header = ['Filename','Start','End','Score','Sentiment','Type'] 
 with open(csv_file_name,'w',encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(csv_header) 
 for f in files:
     for index, (label,time) in enumerate(zip(datadic[f]['features'][:],datadic[f]['intervals'][:]),1):
         filename = f+'_'+str(index)
-        start = str(time.tolist()[0])
-        end = str(time.tolist()[1])
-        label = str(label.tolist()[0])
+        start = time.tolist()[0]
+        end = time.tolist()[1]
+        label = label.tolist()[0]
+        sentiment = 'negative' if label < 0 else 'positive'
         folder = 'train'
         if f in standard_valid_fold:
             folder = 'valid'
         if f in standard_test_fold:
             folder = 'test'
-        csv_row = [filename,start,end,label,folder]
-
+        csv_row = [filename,start,end,label,sentiment,folder]
+        csv_row_str = [str(col) for col in csv_row]
         with open(csv_file_name,'a',encoding='utf-8') as file:
             writer = csv.writer(file)
-            writer.writerow(csv_row) 
+            writer.writerow(csv_row_str) 
 shutil.move(csv_file_name,os.path.join(dst_dir,'aligned',csv_file_name))
 print('Finished recording labels into ', os.path.join(dst_dir,'aligned',csv_file_name))
 
@@ -107,27 +108,11 @@ audio_dir = os.path.join(dst_dir,'raw','Audio','WAV_16000','Segmented')
 video_dir = os.path.join(dst_dir,'raw','Video','Segmented')
 text_dir = os.path.join(dst_dir,'raw','Transcript','Segmented') 
 
-# Crop faces from segmented videos
-face_dir = os.path.join(dst_dir,'raw','Video','FaceSegmented')
-os.makedirs(face_dir,exist_ok=True)
-model = insightface.model_zoo.get_model('retinaface_r50_va')
-model.prepare(ctx_id=0, nms=0.4)
-face_location = []
 
-video_list = os.listdir(video_dir)
-size = 0
-fps = 30
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-count = 0
 
-for video in video_list:
-    video_capture = cv2.VideoCapture(os.path.join(video_dir,video))
-    framecount = video_capture.get(cv2.CAP_PROP_FRAME_COUNT)
-    success, frame = video_capture.read()
-    frame_list = list()
-    frame_index - 0
-    f_c = 0
-    while success:
-        rgb_frame = frame[:,:,::-1]
 
-video_path = 
+
+
+
+
+

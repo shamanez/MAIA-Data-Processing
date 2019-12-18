@@ -11,7 +11,7 @@ import csv
 # Run this file in the parent CMU-MultimodalSDK folder
 
 # Setup folder structure
-dst_dir = '/home/arei826/CMU-MultimodalSDK/cmu-mosi'
+dst_dir = 'cmu-mosi'
 subfolders = ['aligned','csd']  #unzipping creates 'raw' folder
 trainfolders = ['train','test','valid']
 modfolders = ['audio','video','text']
@@ -86,7 +86,7 @@ for f in files:
         folder = 'train'
         if f in standard_valid_fold:
             folder = 'valid'
-        if f in standard_test_fold:
+        elif f in standard_test_fold:
             folder = 'test'
         csv_row = [filename,start,end,label,sentiment,folder]
         csv_row_str = [str(col) for col in csv_row]

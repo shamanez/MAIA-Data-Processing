@@ -6,6 +6,8 @@ import zipfile
 import requests
 import shutil
 import csv
+import cropFace
+import sortTranscript
 
 # This file downloads csd labels, organises file structure
 # Run this file in the parent CMU-MultimodalSDK folder
@@ -96,23 +98,48 @@ for f in files:
 shutil.move(csv_file_name,os.path.join(dst_dir,'aligned',csv_file_name))
 print('Finished recording labels into ', os.path.join(dst_dir,'aligned',csv_file_name))
 
-# Edit vidoes to cut face
-
-
-# Edit text 
-
-# Organise into folder
-
-
 audio_dir = os.path.join(dst_dir,'raw','Audio','WAV_16000','Segmented')
 video_dir = os.path.join(dst_dir,'raw','Video','Segmented')
 text_dir = os.path.join(dst_dir,'raw','Transcript','Segmented') 
 
+# Edit vidoes to cut face, skips duplicates, creates faces_dir
+faces_dir = os.path.join(dst_dir,'raw','Video','Faces')
+cropFace.facer(video_dir,faces_dir)
+print('Finished cropping faces in videos')
 
+# Edit text 
+annot_dir = os.path.join(dst_dir,'raw','Transcript','Labels')
+sortTranscript.sortTranscript(text_dir,annot_dir)
+print('Finished splitting transcripts to individual segments')
 
+# Create dictionary for sorting files later
+train_dic = dict()
+train_dic.update({name:'train' for name in standard_train_fold})
+train_dic.update({name:'test' for name in standard_test_fold})
+train_dic.update({name:'valid' for name in standard_valid_fold})
 
+def findTrainFold(f):
+    filename = f.split('.')[0] #remove extension
+    filename = filename.split('_') #remove segment number
+    filename.pop()
+    filename = '_'.join(filename) #rejoins name if '_' in name
+    train_folder = train_dic[filename]
+    return train_folder
 
+def sortFiles(folder_dir,filetype):
+    count=0
+    for f in os.listdir(folder_dir):
+        train_folder = findTrainFold(f) 
+        src = os.path.join(folder_dir,f)
+        dst = os.path.join(dst_dir,'aligned',train_folder,filetype)
+        shutil.copy(src,dst)
+        count+=1
+        if count%100==0:
+            print(f'{count} of 2199 {filetype} moved')
+    print(f'{filetype} files moved')
+    
+sortFiles(audio_dir,'audio')
+sortFiles(annot_dir,'text')
+sortFiles(faces_dir,'video')
 
-
-
-
+print('CMU-MOSI Setup Complete.')

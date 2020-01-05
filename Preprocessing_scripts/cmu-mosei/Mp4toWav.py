@@ -35,13 +35,11 @@ for video_name in video_list:
 	if file_name not in vid_f_name:
 		continue
 
-	try:
-		video = VideoFileClip(video_path + video_name)
-		audio = video.audio	
-		audio.write_audiofile(audio_path + file_name + '.wav')
-	except IndexError:
-		print(video_name)
-		continue
+
+	video = VideoFileClip(video_path + video_name)
+	audio = video.audio	
+	audio.write_audiofile(audio_path + file_name + '.wav',16000)
+
 	
 	
 	
